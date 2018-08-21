@@ -7,7 +7,7 @@
 	Dim oSecurityState: Set oSecurityState = m_oInstinct.Load("SecurityState")
 	Dim oDbase: Set oDbase = m_oInstinct.Load("DBase")
 	Dim oExport: Set oExport = m_oInstinct.Load("Export")
- 
+
 	'+
 	Dim cSendDplId: cSendDplId = ""
 	Dim dDPL_Calc_Markup
@@ -86,7 +86,7 @@
 		Case "sacoa", "sacoa smart scan", "centeredge"
 			sDPLData = cDplStoreId & "," & r("OrderId")
 		Case "semnox"
-			sDPLData = "DPLFILERI,1001,RPlus," & r("InvoiceId") & "," & r("InvoiceDate") & ",,"	 	
+			sDPLData = "DPLFILERI," & cDplStoreId & ",Redemption Plus," & r("InvoiceId") & "," & r("InvoiceDate") & ",,"		
 		Case Else
 			sDPLData = Replace(Replace(Replace(Replace(r("ShippingPhone") & "", "-", ""), "(", ""), ")", ""), " ", "") & "," & r("OrderId")
 		End Select
@@ -191,7 +191,7 @@
 				case "Standard-UPC"
 					cFieldData = Join(Array(m_oInstinct.Iif(sUPC & "" = "", "" & cItemNumber, sUPC), cItemNumber & "", SanitizeForDpl(r("ItemDescription") & ""), sUnitOfMeas, iQty, FormatString(dUnitPrice, "0.00"), iTickets, iConvFactorDisplay, FormatString(dPriceEa, "0.00")), ",")
 				case "semnox"
-					cFieldData = Join(Array(m_oInstinct.Iif(sUPC & "" = "", "" & cItemNumber, sUPC), SanitizeForDpl(r("ItemDescription") & ""), iQty, sUnitOfMeas, iConvFactorDisplay, FormatString(dPriceEa, "0.00"), iTickets), ",")
+					cFieldData = Join(Array(m_oInstinct.Iif(sUPC & "" = "", "" & cItemNumber, sUPC), SanitizeForDpl(r("ItemDescription") & ""), r("Quantity"), sUnitOfMeas, iConvFactorDisplay, FormatString(dPriceEa, "0.00"), iTickets), ",")
 				Case Else
 					cFieldData = Join(Array(cItemNumber & "", SanitizeForDpl(r("ItemDescription") & ""), sUnitOfMeas, iQty, FormatString(dUnitPrice, "0.00"), iTickets, iConvFactorDisplay, FormatString(dPriceEa, "0.00")), ",")
 				End Select				
