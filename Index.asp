@@ -52,6 +52,7 @@
 		Select Case (m_oForm.Task)
 		Case "OnSale"
 			.x_ "<h1 style=""margin:0;padding:0;""><img src=""/Product/SaleItems.jpg"" alt=""Redemption Merchandise on Sale"" /></h1>"
+			.x_ "<br /><br /><p style='font-size:20px;'>Sale items can not be returned and ticket values are subject to change.</p>"
 		Case "New"
 			.x_ "<h1 style=""margin:0;padding:0;""><img src=""/Product/NewProducts.jpg"" alt=""New Redemption Merchandise"" /></h1>"
 		Case "HotProduct"
